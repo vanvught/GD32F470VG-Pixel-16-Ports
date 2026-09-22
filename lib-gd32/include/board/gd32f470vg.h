@@ -40,15 +40,15 @@
  * LEDs
  */
 
-#define LED1_GPIO_PINx		GPIO_PIN_7
+#define LED1_GPIO_PINx		GPIO_PIN_0
 #define LED1_GPIOx			GPIOC
 #define LED1_RCU_GPIOx		RCU_GPIOC
 
-#define LED2_GPIO_PINx		GPIO_PIN_8
+#define LED2_GPIO_PINx		GPIO_PIN_2
 #define LED2_GPIOx			GPIOC
 #define LED2_RCU_GPIOx		RCU_GPIOC
 
-#define LED3_GPIO_PINx		GPIO_PIN_9
+#define LED3_GPIO_PINx		GPIO_PIN_3
 #define LED3_GPIOx			GPIOC
 #define LED3_RCU_GPIOx		RCU_GPIOC
 
@@ -60,9 +60,13 @@
  * KEY
  */
 
-#define KEY1_PINx						GPIO_PIN_13
-#define KEY1_GPIOx						GPIOC
-#define KEY1_RCU_GPIOx					RCU_GPIOC
+#define KEY1_PINx						GPIO_PIN_7
+#define KEY1_GPIOx						GPIOD
+#define KEY1_RCU_GPIOx					RCU_GPIOD
+
+#define KEY2_PINx						GPIO_PIN_6
+#define KEY2_GPIOx						GPIOD
+#define KEY2_RCU_GPIOx					RCU_GPIOD
 
 #define KEY_BOOTLOADER_TFTP_GPIO_PINx	KEY1_PINx
 #define KEY_BOOTLOADER_TFTP_GPIOx		KEY1_GPIOx
