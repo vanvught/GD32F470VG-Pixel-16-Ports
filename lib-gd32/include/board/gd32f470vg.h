@@ -149,4 +149,25 @@
 
 #include "mcu/gd32f470_mcu.h"
 
+// Panel LEDs
+#ifdef __cplusplus
+#include <cstdint>
+namespace panelled {
+inline constexpr uint32_t kActivity = 0;
+inline constexpr uint32_t kArtnet = 0;
+inline constexpr uint32_t kDdp = 0;
+inline constexpr uint32_t kSacn = 0;
+inline constexpr uint32_t kLtcIn = 0;
+inline constexpr uint32_t kLtcOut = 0;
+inline constexpr uint32_t kMidiIn = 0;
+inline constexpr uint32_t kMidiOut = 0;
+inline constexpr uint32_t kOscIn = 0;
+inline constexpr uint32_t kOscOut = 0;
+inline constexpr uint32_t kTcnet = 0;
+// DMX
+static constexpr uint32_t kPortARx = 0;
+static constexpr uint32_t kPortATx = 0;
+} // namespace panelled
+#endif // __cplusplus
+
 #endif // BOARD_GD32F470VG_H_
