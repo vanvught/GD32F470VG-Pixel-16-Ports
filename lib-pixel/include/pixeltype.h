@@ -32,7 +32,6 @@
 
 #include "common/utils/utils_string.h"
 #include "common/utils/utils_array.h"
-#include "common/utils/utils_math.h"
 
 namespace pixel {
 inline constexpr uint8_t kRtzLowCode = 0xC0;

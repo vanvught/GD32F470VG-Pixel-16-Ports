@@ -1,4 +1,4 @@
-#if !defined(DISPLAY_UDF)
+#ifndef DISPLAY_UDF
 /**
  * @file network_display.cpp
  *
@@ -29,66 +29,55 @@
 #include "display.h"
 #include "core/protocol/dhcp.h"
 
-#if !defined(CONFIG_DISPLAY_LINE_IP)
+#ifndef CONFIG_DISPLAY_LINE_IP
 static constexpr uint32_t LINE_IP = 2;
 #else
 static constexpr uint32_t LINE_IP = CONFIG_DISPLAY_LINE_IP;
 #endif // CONFIG_DISPLAY_LINE_IP
 
-namespace emac::display
-{
-void __attribute__((weak)) Config()
-{
-#if !defined(NO_EMAC)
+namespace emac::display {
+void __attribute__((weak)) Config() {
+#ifndef NO_EMAC
     Display::Get()->ClearLine(LINE_IP);
     Display::Get()->PutString("Ethernet config");
 #endif // NO_EMAC
 }
 
-void __attribute__((weak)) Start()
-{
-#if !defined(NO_EMAC)
+void __attribute__((weak)) Start() {
+#ifndef NO_EMAC
     Display::Get()->ClearLine(LINE_IP);
     Display::Get()->PutString("Ethernet start");
 #endif // NO_EMAC
 }
 
-void __attribute__((weak)) Status([[maybe_unused]] bool isLinkUp)
-{
-#if !defined(NO_EMAC)
+void __attribute__((weak)) Status([[maybe_unused]] bool isLinkUp) {
+#ifndef NO_EMAC
     Display::Get()->ClearLine(LINE_IP);
     Display::Get()->PutString("Ethernet Link ");
-    if (isLinkUp)
-    {
+    if (isLinkUp) {
         Display::Get()->PutString("UP");
-    }
-    else
-    {
+    } else {
         Display::Get()->PutString("DOWN");
     }
 #endif // NO_EMAC
 }
-} // namespace net::emac::display
+} // namespace emac::display
 
-namespace network::display
-{
+namespace network::display {
 void __attribute__((weak)) Hostname() {}
 
-void __attribute__((weak)) EmacShutdown()
-{
-#if !defined(NO_EMAC)
+void __attribute__((weak)) EmacShutdown() {
+#ifndef NO_EMAC
     Display::Get()->ClearLine(LINE_IP);
     Display::Get()->PutString("Ethernet shutdown");
 #endif // NO_EMAC
 }
 
-void __attribute__((weak)) DhcpStatus([[maybe_unused]] network::dhcp::State state)
-{
-#if !defined(NO_EMAC)
+void __attribute__((weak)) DhcpStatus([[maybe_unused]] network::dhcp::State state) {
+#ifndef NO_EMAC
     Display::Get()->ClearLine(LINE_IP);
 
-    switch (state)
-    {
+    switch (state) {
         case network::dhcp::State::kOff:
             break;
         case network::dhcp::State::kRenewing:

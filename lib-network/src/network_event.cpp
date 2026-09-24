@@ -1,4 +1,4 @@
-#if !defined(DISPLAY_UDF)
+#ifndef DISPLAY_UDF
 /**
  * @file network_event.cpp
  *
@@ -30,45 +30,40 @@
 #include "network.h"
 #include "ip4/ip4_address.h"
 #include "network_display.h"
-#if !defined(NO_EMAC)
+#ifndef NO_EMAC
 #include "emac/emac.h"
 #endif // NO_EMAC
 
-#if !defined(CONFIG_DISPLAY_LINE_IP)
+#ifndef CONFIG_DISPLAY_LINE_IP
 static constexpr uint32_t LINE_IP = 2;
 #else
 static constexpr uint32_t LINE_IP = CONFIG_DISPLAY_LINE_IP;
 #endif // CONFIG_DISPLAY_LINE_IP
 
-namespace network::event
-{
-void __attribute__((weak)) Ipv4AddressChanged()
-{
-#if !defined(NO_EMAC)
+namespace network::event {
+void __attribute__((weak)) Ipv4AddressChanged() {
+#ifndef NO_EMAC
     Display::Get()->ClearLine(LINE_IP);
     Display::Get()->Printf(LINE_IP, "" IPSTR "/%d %c", IP2STR(network::GetPrimaryIp()), network::GetNetmaskCIDR(), network::iface::AddressingMode());
 #endif // NO_EMAC
 }
 
-void __attribute__((weak)) Ipv4NetmaskChanged()
-{
-#if !defined(NO_EMAC)
+void __attribute__((weak)) Ipv4NetmaskChanged() {
+#ifndef NO_EMAC
     Ipv4AddressChanged();
 #endif // NO_EMAC
 }
 
 void __attribute__((weak)) Ipv4GatewayChanged() {}
 
-void __attribute__((weak)) LinkUp()
-{
-#if !defined(NO_EMAC)
+void __attribute__((weak)) LinkUp() {
+#ifndef NO_EMAC
     emac::display::Status(true);
 #endif // NO_EMAC
 }
 
-void __attribute__((weak)) LinkDown()
-{
-#if !defined(NO_EMAC)
+void __attribute__((weak)) LinkDown() {
+#ifndef NO_EMAC
     emac::display::Status(false);
 #endif // NO_EMAC
 }
